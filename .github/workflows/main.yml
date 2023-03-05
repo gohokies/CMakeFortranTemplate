@@ -1,0 +1,23 @@
+name: CMakeFortrantemplate CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: CMake configure
+        run: |
+          cmake -S . -B ./build
+
+      - name: CMake build
+        run: |
+          cmake --build ./build
